@@ -2,13 +2,17 @@
 from ast import literal_eval
 from EDA import DataFrame
 from DataProcessing import DataProcessor
+from RecommendationEngine import RecommendationEngineer
 
 #Import data from EDA
 df = DataFrame()
-movies_df = df.Merge()
+movies_df = df.merge()
 
 #Create class for data processing
 dp = DataProcessor()
+
+#Create class for recommendation engine
+re = RecommendationEngineer()
 
 #Point the features
 features = ['cast', 'crew', 'keywords', 'genres']
@@ -37,4 +41,9 @@ for feature in features:
 #Create vectorizer of needed metadata information
 movies_df['vectorizer'] = movies_df.apply(dp.create_vectorizer, axis = 1)
 
-print(movies_df['vectorizer'].head())
+#Transform vectorizer to matrix
+count_matrix = re.transform(movies_df['vectorizer'])
+cossimilarity = re.get_cosine_similarity(count_matrix)
+
+#Reset the indices of dataframe
+indices = df.reset_indices(movies_df)
