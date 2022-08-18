@@ -59,6 +59,5 @@ class Recommender:
         indices = self.df.reset_indices(movies)
 
         recommends = self.re.get_recommendation(name, movies, indices, cossimilarity)
-        
 
         return recommends

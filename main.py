@@ -1,14 +1,11 @@
 #Import needed tools
-from Recommend import Recommender
+from tkinter import *
+from GUI import WindowsManager
 
-#Input name of movie
-name = input()
-
-#Create class for recommend
-r = Recommender()
-
-#Get top 10 recommendation to the movie
-movies = r.get_recommends(name)
-
-#Show movies recommend to user
-print("\n".join(movies))
+#Window setting
+window = Tk()
+w = WindowsManager(window)
+window.title("Movie Recommendation System")
+window.geometry("480x281")
+window.resizable(False,False)
+window.mainloop()

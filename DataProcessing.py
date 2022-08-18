@@ -37,5 +37,5 @@ class DataProcessor:
     def create_vectorizer(self, features):
         return (" ".join(features['keywords']) + " " +
                " ".join(features['cast']) + " " +
-               " ".join(features['director']) + " " +
+               "".join(features['director']) + " " +
                " ".join(features['genres']))
