@@ -1,10 +1,18 @@
-#Import libraries
+#Import needed tools
 import pandas as pd
 
-#Point the way to data
-credits_df = pd.read_csv("tmdb_credits.csv")
-movies_df = pd.read_csv("tmdb_movies.csv")
+#Create class for EDA
+class DataFrame:
 
-#Merge dataframes into one
-credits_df.columns = ['id','title','cast','crew']
-movies_df = movies_df.merge(credits_df, on = "id")
+    #Point the way to data
+    def __init__(self):
+        self.credits_df = pd.read_csv("tmdb_credits.csv")
+        self.movies_df = pd.read_csv("tmdb_movies.csv")
+
+    #Merge dataframes into one
+    def Merge(self):
+        movies_df = self.movies_df
+        credits_df = self.credits_df
+        credits_df.columns = ['id','title','cast','crew']
+        df = movies_df.merge(credits_df, on = "id")
+        return df
