@@ -18,7 +18,7 @@ class DataFrame:
         return df
 
     #Reset the indices of dataframe
-    def reset_indices(self,df):
+    def reset_indices(self, df):
         df = df.reset_index()
         indices = pd.Series(df.index, index = df['original_title']).drop_duplicates()
         return indices
